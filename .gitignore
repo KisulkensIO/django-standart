@@ -1,0 +1,12 @@
+#cached files
+__pycache__/
+.*_cache/
+
+#works files
+*.sqlite3
+.env
+.coverage
+
+#all media and static
+/static
+/media

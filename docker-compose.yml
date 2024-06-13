@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    command:
+      - sh
+      - -c
+      - gunicorn --bind 0.0.0.0:8000 backend.backend.wsgi:application --log-level info --workers 4 --timeout 60
+      
+networks:
+  default:
+    name: "template"

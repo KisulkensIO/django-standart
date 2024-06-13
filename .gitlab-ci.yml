@@ -1,0 +1,62 @@
+stages:
+  - Lint
+  - Test
+  - Build
+  - Deploy
+
+default:
+  image: docker:rc-cli
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" $CI_REGISTRY --password-stdin
+
+lint:
+  stage: Lint
+  only:
+    refs:
+      - branches
+    variables:
+      - $CI_COMMIT_REF_PROTECTED == "true"
+  script:
+    - docker compose -f docker-compose.lint.yml up --build
+
+test:
+  stage: Test
+  only:
+    refs:
+      - branches
+    variables:
+      - $CI_COMMIT_REF_PROTECTED == "true"
+  script:
+    - docker compose -f docker-compose.testing.yml up --build
+
+build:
+  stage: Build
+  script:
+    - docker compose build
+    - docker compose push
+  services:
+    - docker:dind
+  only:
+    - main
+
+deploy:
+  stage: Deploy
+  variables:
+    DOCKER_HOST: tcp://$MANAGER_ADDRESS:2376
+    DOCKER_TLS_VERIFY: 1
+    DOCKER_CERT_PATH: "/certs"
+  services:
+    - docker:dind
+  environment:
+    name: production
+  only:
+    - main
+  before_script:
+    - mkdir -p $DOCKER_CERT_PATH
+    - echo "$TLSCACERT" > $DOCKER_CERT_PATH/ca.pem
+    - echo "$TLSCERT" > $DOCKER_CERT_PATH/cert.pem
+    - echo "$TLSKEY" > $DOCKER_CERT_PATH/key.pem
+    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" $CI_REGISTRY --password-stdin
+  script:
+    - docker compose pull
+    - docker compose up -d

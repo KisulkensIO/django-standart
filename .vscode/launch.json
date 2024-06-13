@@ -1,0 +1,21 @@
+{
+    "version": "0.0.1",
+    "configurations": [
+        {
+            "name": "Python Debugger",
+            "type": "debugpy",
+            "request": "attach",
+            "connect": {
+                "port": 5678
+            },
+            "justMyCode": false,
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "/code"
+                }
+            ],
+            "django": true,
+        }
+    ]
+}

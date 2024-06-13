@@ -1,0 +1,12 @@
+Makefile
+Dockerfile
+Dockerfile.dev
+.gitlab-ci.yml
+.git/
+.vscode/
+.*_cache/
+__pycache__/
+docker-compose.yml
+docker-compose.*.yml
+.gitignore
+.env.dist
