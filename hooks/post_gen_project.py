@@ -3,11 +3,8 @@ import subprocess
 
 
 def main():
-    failed = subprocess.call(["git", "init"])
-    if not failed:
-        subprocess.call(["git", "add", "*"])
-        subprocess.call(["git", "commit", "-m", "Initial commit"])
-    else:
+    completed = subprocess.call(["git", "init"])
+    if not completed:
         print("Git repository not setup")
     shutil.copyfile(".env.dist", ".env")
 
