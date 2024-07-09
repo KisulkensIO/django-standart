@@ -89,6 +89,8 @@ unfixable = []
 [tool.ruff.format]
 quote-style = "single"
 
+exclude = ["config"]
+
 indent-style = "space"
 
 skip-magic-trailing-comma = false
@@ -97,9 +99,6 @@ line-ending = "lf"
 
 docstring-code-format = false
 docstring-code-line-length = "dynamic"
-
-[tool.ruff.format]
-exclude = ["config"]
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["E402"]
