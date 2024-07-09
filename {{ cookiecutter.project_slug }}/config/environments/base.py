@@ -2,7 +2,6 @@ from pathlib import Path
 
 from config.env import env
 
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 env.read_env()
 
