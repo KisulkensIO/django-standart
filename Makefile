@@ -21,4 +21,4 @@ stop:
 .PHONY=stop
 
 initapp:
-	python manage.py startapp
+	python manage.py startapp --template https://github.com/KisulkensIO/django-standart-app/archive/main.zip testing
