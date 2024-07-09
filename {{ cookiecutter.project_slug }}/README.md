@@ -1,7 +1,3 @@
-# How to use it
+# Django Template For Progressive Web Apps
 
-* <code>cookiecutter https://github.com/KisulkensIO/django-standart</code>
-
-* <code>poetry install</code>
-
-* <code>make</code>
+Instructions coming soon...
