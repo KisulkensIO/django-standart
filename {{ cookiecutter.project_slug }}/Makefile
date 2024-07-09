@@ -8,9 +8,6 @@ else
 	COPY_ENV=cp -n .env.dist .env
 endif
 
-copyenv:
-	$(COPY_ENV)
-
 start:
 	$(COPY_ENV)
 	$(WSL) docker compose -f docker-compose.debug.yml up --build
@@ -21,4 +18,5 @@ stop:
 .PHONY=stop
 
 initapp:
-	python manage.py startapp --template https://github.com/KisulkensIO/django-standart-app/archive/main.zip testing
+	python manage.py startapp --template https://github.com/KisulkensIO/django-standart-app/archive/main.zip $(name)
+.PHONY=initapp
