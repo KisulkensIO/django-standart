@@ -1,8 +1,6 @@
 {
     "files.eol": "\n",
     "files.associations": {
-        "*.email.html": "django-txt",
-        "*.html": "django-html",
         "*.py": "python",
         "Dockerfile.*": "dockerfile",
         ".gitignore": "ignore",
