@@ -89,7 +89,7 @@ unfixable = []
 [tool.ruff.format]
 quote-style = "single"
 
-exclude = ["config"]
+exclude = ["config/*"]
 
 indent-style = "space"
 
