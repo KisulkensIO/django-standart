@@ -1,5 +1,10 @@
 {
     "files.eol": "\n",
+    "files.associations": {
+        "*.email.html": "django-txt",
+        "*.html": "django-html",
+        "*.py": "python"
+    },
     "ruff.showNotifications": "onWarning",
     "[python]": {
         "editor.formatOnSave": true,

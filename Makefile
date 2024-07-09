@@ -8,6 +8,9 @@ else
 	COPY_ENV=cp -n .env.dist .env
 endif
 
+copyenv:
+	$(COPY_ENV)
+
 start:
 	$(COPY_ENV)
 	$(WSL) docker compose -f docker-compose.debug.yml up --build
@@ -16,3 +19,6 @@ start:
 stop:
 	$(WSL) docker compose -f docker-compose.debug.yml down --rmi local --remove-orphans -v
 .PHONY=stop
+
+initapp:
+	python manage.py startapp
