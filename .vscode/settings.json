@@ -3,7 +3,10 @@
     "files.associations": {
         "*.email.html": "django-txt",
         "*.html": "django-html",
-        "*.py": "python"
+        "*.py": "python",
+        "Dockerfile.*": "dockerfile",
+        ".gitignore": "ignore",
+        ".env.*": "properties"
     },
     "ruff.showNotifications": "onWarning",
     "[python]": {
