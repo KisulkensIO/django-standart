@@ -5,3 +5,5 @@
 * <code>poetry install</code>
 
 * <code>make</code>
+
+* <code>make initapp name=yourappname</code>
